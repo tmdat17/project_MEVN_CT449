@@ -2,7 +2,7 @@
     <div id="app">
         <header>
             <div>
-                <router-link :to="{ name: 'musicapp' }" class="title">
+                <router-link :to="{ name: 'musicapp' }" class="title" @click="handleWhenClickHome">
                     My Music
                 </router-link>
             </div>
@@ -15,11 +15,11 @@
                             Danh sách các ca sĩ
                         </div>
 
-                        <router-link to='/singer/add' class="title">
+                        <router-link to='/singer/add' class="title" @click="handlePauseWhenNavigate">
                             <div class="btn btn-dark p-2 m-3">Thêm ca sĩ mới</div>
                         </router-link>
 
-                        <router-link to='/song/add' class="title">
+                        <router-link to='/song/add' class="title" @click="handlePauseWhenNavigate">
                             <div class="btn btn-dark p-2 m-3">Thêm bài hát mới</div>
                         </router-link>
 
@@ -31,7 +31,7 @@
                         <ul v-if="isDisplayListSinger" class="list-singer">
 
                             <li class="item-singer" v-for="singer in singers">
-                                <router-link :to="{
+                                <router-link @click="handlePauseWhenNavigate" :to="{
                                     name: 'singerDetail',
                                     params: { id: singer._id },
                                 }">
@@ -63,7 +63,8 @@
                     </h2>
 
                     <div class="time">
-                        <input @change="handleChangeBar" type="range" name="range" id="range" class="range" />
+                        <input @change="handleChangeBar" :value="range.value" type="range" name="range" id="range"
+                            class="range" />
                     </div>
                     <div class="timer">
                         <div class="durationTime">{{ durationTime }}</div>
@@ -108,7 +109,7 @@ export default {
         SingerAdd
     },
     data() {
-
+        let timer;
         return {
             current: {},
             index: 0,
@@ -120,6 +121,7 @@ export default {
             player: new Audio(),
             durationTime: "00:00",
             remainingTime: "00:00",
+
             range: {
                 max: 0,
                 value: 0,
@@ -160,10 +162,11 @@ export default {
 
                 this.player.src = this.current?.srcSong;
             }
-            setInterval(() => {
+
+            this.player.play();
+            this.timer = setInterval(() => {
                 this.displayTimer();
             }, 500);
-            this.player.play();
             this.player.addEventListener(
                 "ended",
                 function () {
@@ -180,7 +183,11 @@ export default {
         },
         pause() {
             this.player.pause();
+            clearInterval(this.timer);
             this.isPlaying = false;
+        },
+        handlePauseWhenNavigate() {
+            this.pause();
         },
         next() {
             this.index++;
@@ -210,8 +217,9 @@ export default {
 
         displayTimer() {
             const { duration, currentTime } = this?.player;
-            range.max = duration;
-            range.value = currentTime;
+            this.range.max = duration;
+            this.range.value = currentTime;
+
             this.remainingTime = this.formatTimer(currentTime);
             if (!duration) {
                 this.durationTime = "00:00";
@@ -222,6 +230,21 @@ export default {
         handleChangeBar() {
             this.player.currentTime = range.value;
         },
+
+
+        handleWhenClickHome() {
+
+            this.current = null;
+            this.pause();
+            this.player = new Audio(),
+                this.range.max = 0;
+            this.range.value = 0;
+
+            this.durationTime = "00:00",
+                this.remainingTime = "00:00",
+                this.refreshList();
+            console.log("click home:  ", this.current);
+        }
     },
     created() {
         this.refreshList();
