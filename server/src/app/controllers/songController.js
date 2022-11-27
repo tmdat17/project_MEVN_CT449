@@ -54,6 +54,60 @@ const songController = {
             res.status(500).json(error);
         }
     },
+
+    // [PUT] /song/edit/:id  (Edit one song)
+    editSong: async (req, res) => {
+        try {
+            const songNeedEdit = await Song.findById(req.params.id);
+            if (req.body.nameSinger === songNeedEdit.nameSinger) {
+                await songNeedEdit.updateOne({ $set: req.body });
+                res.status(200).json("Cập nhật bài hát thành công!!");
+                return;
+            } else {
+                const singerNew = await Singer.find({
+                    nameSinger: req.body.nameSinger,
+                });
+
+                //Thêm bài hát cần cập nhật vào mảng songs của ca sĩ mới
+                await singerNew[0].updateOne({
+                    $push: {
+                        songs: songNeedEdit._id,
+                    },
+                });
+
+                const singerOld = await Singer.findById(songNeedEdit.singer);
+                // Xóa bài hát cần cập nhật ra khỏi mảng songs của ca sĩ cũ
+                await singerOld.updateOne({
+                    $pull: {
+                        songs: songNeedEdit._id,
+                    },
+                });
+
+                // Sau đó cập nhật các thông tin cơ bản lại cho bài hát đó
+                req.body.singer = singerNew[0]._id;
+                await songNeedEdit.updateOne({ $set: req.body });
+                res.status(200).json("Cập nhật bài hát thành côngg!!");
+                return;
+            }
+        } catch (error) {}
+    },
+
+    // [DELETE] /song/delete/:id  (Delete one song)
+    deleteOneSong: async (req, res) => {
+        try {
+            const songNeedDelete = await Song.findById(req.params.id);
+            const singer = await Singer.findById(songNeedDelete.singer);
+            await singer.updateOne({
+                $pull: {
+                    songs: songNeedDelete._id,
+                },
+            });
+            await songNeedDelete.delete();
+            res.status(200).json("Xóa bài hát thành công!!");
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
 };
 
 module.exports = songController;

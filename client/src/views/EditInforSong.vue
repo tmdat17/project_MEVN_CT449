@@ -8,9 +8,9 @@
             </div>
         </header>
         <main>
-            <h3 class="mt-3 text-center">Thêm bài hát mới</h3>
+            <h3 class="mt-3 text-center">Chỉnh sửa thông tin bài hát</h3>
             <div class="mt-3 text-primary text-center fw-bold" style="fontSize: 1.3rem">{{ message }}</div>
-            <form @submit.prevent="handleAddSong"
+            <form @submit.prevent="handleEditSong"
                 class=" container-fluid d-flex justify-content-center align-item-center ">
                 <div class="wrapper-add-song ">
                     <div class="form-group mt-5 row">
@@ -31,25 +31,26 @@
                         </div>
                         <div class="input-song col-md-8">
                             <select v-model="selectedSinger" @change="handleSelectSinger">
-                                <option value="" disabled>Chọn ca sĩ</option>
+                                <option :value="selectedSinger" disabled>{{ selectedSinger }}</option>
                                 <option v-for="singer in singers">{{ singer.nameSinger }}</option>
                                 {{ selectedSinger }}
                             </select>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mt-5"><button class="btn btn-primary text-center"
-                            type="submit">Thêm bài hát</button></div>
+                            type="submit">Chỉnh sửa bài hát</button></div>
                 </div>
             </form>
         </main>
     </div>
 </template>
 
-<script >
+<script>
 import singerService from '../services/singerService';
 import songService from '../services/songService';
 export default {
     data() {
+        let song = {};
         let nameSong = '';
         let thumb = '';
         let srcSong = '';
@@ -57,6 +58,7 @@ export default {
         let singers = [];
         let message = '';
         return {
+            song,
             nameSong,
             thumb,
             srcSong,
@@ -65,42 +67,55 @@ export default {
             message,
         }
     },
-
     methods: {
+        async getOneSong() {
+            try {
+                const res = await songService.getOneSong(this.$route.params.id);
+                console.log("song:   ", res);
+                this.song = res;
+                this.nameSong = this.song.nameSong;
+                this.thumb = this.song.thumb;
+                this.srcSong = this.song.srcSong;
+                this.selectedSinger = this.song.nameSinger;
+                console.log("song.namesinger:  ", this.song.nameSinger);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+
         handleSelectSinger() {
             console.log("newSelectedSinger:  ", this.selectedSinger);
         },
         async getAllSingerFromAPI() {
             try {
                 this.singers = await singerService.getAllSingers();
-                console.log("call api singer ben add music:  ", this.singers[0]);
+                console.log("call api singer ben edit song:  ", this.singers[0]);
+                this.singers = this.singers.filter((item) => {
+                    return item.nameSinger !== this.song.nameSinger;
+                })
+                console.log("arr updatedd:  ", this.singers);
             } catch (error) {
                 console.log(error);
             }
         },
-        handleAddSong() {
+        async handleEditSong() {
             try {
-                const newSong = {
+                const songNeedEdit = {
                     nameSong: this.nameSong,
                     thumb: this.thumb,
                     srcSong: this.srcSong,
                     nameSinger: this.selectedSinger,
                 }
-                console.log("newsong:   ", newSong);
-                songService.addNewSong(newSong);
-                this.nameSong = '';
-                this.thumb = '';
-                this.srcSong = '';
-                this.selectedSinger = '';
-                this.message = 'Thêm bài hát mới thành công!!';
+                this.message = await songService.editSong(this.$route.params.id, songNeedEdit);
             } catch (error) {
                 console.log(error);
             }
-
         }
     },
-    mounted() {
+    async created() {
+        await this.getOneSong();
         this.getAllSingerFromAPI();
+
     }
 }
 </script>

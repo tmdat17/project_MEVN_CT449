@@ -3,6 +3,9 @@ import HomeMusic from "../views/HomeMusic.vue";
 import SingerAdd from "../views/SingerAdd.vue";
 import SongAdd from "../views/SongAdd.vue";
 import DetailSinger from "../views/DetailSinger.vue";
+import DetailSong from "../views/DetailSong.vue";
+import EditInforSinger from "../views/EditInforSinger.vue";
+import EditInforSong from "../views/EditInforSong.vue";
 const routes = [
     {
         path: "/",
@@ -23,6 +26,21 @@ const routes = [
         path: "/singer/:id",
         name: "singerDetail",
         component: DetailSinger,
+    },
+    {
+        path: "/song/:id",
+        name: "songDetail",
+        component: DetailSong,
+    },
+    {
+        path: "/singer/edit/:id",
+        name: "singerEditInfor",
+        component: EditInforSinger,
+    },
+    {
+        path: "/song/edit/:id",
+        name: "songEditInfor",
+        component: EditInforSong,
     },
 ];
 const router = createRouter({

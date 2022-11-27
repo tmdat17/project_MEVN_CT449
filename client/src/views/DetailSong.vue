@@ -8,31 +8,26 @@
             </div>
         </header>
         <main>
-            <h1 class="text-center mt-2">Thông tin ca sĩ</h1>
-            <div class="infor-singer">
-                <div class="mt-5 d-flex justify-content-center">
-                    <h3 class="" style="width: 15rem">Tên ca sĩ: </h3>
-                    <span>{{ singer.nameSinger }}</span>
-                    <img :src="singer.avt" alt="">
+            <h1 class="text-center mt-2">Thông tin bài hát</h1>
+            <div class="infor-song">
+                <div class="mt-5 row">
+                    <h3 class="col-md-4 d-flex justify-content-end " style="width: 15rem">Tên bài hát: </h3>
+                    <span class="col-md-4 d-flex justify-content-center ">{{ song.nameSong }}</span>
+                    <img class="col-md-4 d-flex justify-content-end" :src="song.thumb" alt="">
                 </div>
-                <div class="mt-5 d-flex justify-content-center ">
-                    <h3 class="" style="width: 20rem">Các bài hát của {{ singer.nameSinger }}: </h3>
-                    <div class="list-song">
-                        <li v-if="songOfSinger.length == 0"> Chưa có bài hát nào!! </li>
-                        <ul v-else>
-                            <li v-for="song in songOfSinger">{{ song.nameSong }}</li>
-                        </ul>
-                    </div>
+                <div class="mt-5 row ">
+                    <h3 class="col-md-4 d-flex justify-content-end" style="width: 20rem">Bài hát này của: </h3>
+                    <span class="col-md-4 d-flex justify-content-center ">{{ singerOfSong.nameSinger }}</span>
                 </div>
-                <div class="control-singer">
+                <div class="control-song">
 
                     <router-link :to="{
-                        name: 'singerEditInfor',
-                        params: { id: singer._id },
+                        name: 'songEditInfor',
+                        params: { id: song._id },
                     }">
-                        <div class="btn btn-edit">Chỉnh sửa thông tin ca sĩ</div>
+                        <div class="btn btn-edit">Chỉnh sửa thông tin bài hát</div>
                     </router-link>
-                    <div class="btn btn-delete" @click="handleDeleteSinger">Xóa ca sĩ</div>
+                    <div class="btn btn-delete" @click="handleDeleteSong">Xóa bài hát</div>
                 </div>
             </div>
         </main>
@@ -40,33 +35,32 @@
 </template>
 
 <script>
-import singerService from '../services/singerService';
-
+import songService from '../services/songService';
 export default {
     data() {
         let message = '';
         return {
-            singer: {},
-            songOfSinger: [],
+            song: {},
+            singerOfSong: {},
             message,
         }
     },
     methods: {
-        async getOneSinger() {
+        async getOneSong() {
             try {
-                const res = await singerService.getOneSinger(this.$route.params.id);
-                console.log("singer:   ", res);
-                this.singer = res;
-                this.singer.songs.map((item) => this.songOfSinger.push(item));
+                const res = await songService.getOneSong(this.$route.params.id);
+                console.log("song:   ", res);
+                this.song = res;
+                this.singerOfSong = this.song.singer;
             } catch (error) {
                 console.log(error);
             }
         },
 
-        async handleDeleteSinger() {
+        async handleDeleteSong() {
             if (confirm("Bạn có chắc chắn xóa?")) {
                 try {
-                    this.message = await singerService.deleteSinger(this.$route.params.id);
+                    this.message = await songService.deleteSong(this.$route.params.id);
                     this.$router.push({ name: "musicapp" });
                 } catch (error) {
                     console.log(error);
@@ -77,46 +71,41 @@ export default {
     },
 
     created() {
-        this.getOneSinger();
+        this.getOneSong();
 
     }
 
 }
-
 </script>
 
 <style scoped>
-.infor-singer {
+.infor-song {
     height: 30rem;
     max-height: 60rem;
     background-color: rgba(111, 232, 111, 0.781);
     border-radius: 8rem;
 }
 
-.infor-singer h3 {
+.infor-song h3 {
     font-weight: 500;
-
 }
 
-.infor-singer div {
+.infor-song div {
     position: relative;
-
 }
 
-.infor-singer div img {
-    border-radius: 50%;
-    height: 7rem;
-    width: 7rem;
+.infor-song div img {
+    height: 8rem;
+    width: 10rem;
     margin-left: 5rem;
     position: absolute;
     top: -100%;
     right: 20%;
-    box-shadow: 0 0 0 0.5rem white;
+    background-color: rgb(255, 255, 255);
 }
 
-.infor-singer div span {
+.infor-song div span {
     font-size: 1.5rem;
-    margin-left: 10rem;
 }
 
 
@@ -134,14 +123,14 @@ export default {
     margin-left: 4rem;
 }
 
-.control-singer {
+.control-song {
     margin-top: 5rem;
     display: flex;
     justify-content: center;
 
 }
 
-.control-singer .btn-edit {
+.control-song .btn-edit {
     margin-right: 3rem;
     font-size: 1.3rem;
     font-weight: 600;
@@ -152,11 +141,11 @@ export default {
     transition: all .225s;
 }
 
-.control-singer .btn-edit:hover {
+.control-song .btn-edit:hover {
     background-color: rgba(0, 255, 255, 0.721);
 }
 
-.control-singer .btn-delete {
+.control-song .btn-delete {
     margin-left: 3rem;
     font-size: 1.3rem;
     font-weight: 600;
@@ -168,7 +157,7 @@ export default {
     transition: all .225s;
 }
 
-.control-singer .btn-delete:hover {
+.control-song .btn-delete:hover {
     background-color: rgba(236, 104, 104, 0.721);
 }
 </style>

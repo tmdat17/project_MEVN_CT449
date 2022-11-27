@@ -14,7 +14,9 @@
                         <div class="btn btn-dark p-2 m-3" @click="displayListSinger">
                             Danh sách các ca sĩ
                         </div>
-
+                        <div class="btn btn-dark p-2 m-3" @click="displayListSong">
+                            Danh sách các bài hát
+                        </div>
                         <router-link to='/singer/add' class="title" @click="handlePauseWhenNavigate">
                             <div class="btn btn-dark p-2 m-3">Thêm ca sĩ mới</div>
                         </router-link>
@@ -40,6 +42,27 @@
                                             {{ singer.nameSinger }}
                                         </span>
                                         <img :src="singer.avt" alt="" />
+                                    </div>
+                                </router-link>
+
+                            </li>
+                            <hr style="margin-top: 1.4rem" />
+                        </ul>
+                        <h2 v-if="isDisplayListSong" class="text-center mb-5">
+                            Danh sách các bài hát
+                        </h2>
+                        <ul v-if="isDisplayListSong" class="list-singer">
+
+                            <li class="item-singer" v-for="song in songs">
+                                <router-link @click="handlePauseWhenNavigate" :to="{
+                                    name: 'songDetail',
+                                    params: { id: song._id },
+                                }">
+                                    <div>
+                                        <span>
+                                            {{ song.nameSong }}
+                                        </span>
+                                        <img :src="song.thumb" alt="" />
                                     </div>
                                 </router-link>
 
@@ -115,13 +138,14 @@ export default {
             index: 0,
             isPlaying: false,
             isDisplayListSinger: false,
+            isDisplayListSong: false,
 
             songs: [],
             singers: [],
             player: new Audio(),
             durationTime: "00:00",
             remainingTime: "00:00",
-
+            timer,
             range: {
                 max: 0,
                 value: 0,
@@ -132,7 +156,7 @@ export default {
         async getAllSongFromAPI() {
             try {
                 this.songs = await songService.getAllSongs();
-                console.log("call api song:  ", this.songs[0]);
+                console.log("call api song:  ", this.songs);
             } catch (error) {
                 console.log(error);
             }
@@ -140,7 +164,7 @@ export default {
         async getAllSingerFromAPI() {
             try {
                 this.singers = await singerService.getAllSingers();
-                console.log("call api singer:  ", this.singers[0]);
+                console.log("call api singer:  ", this.singers);
             } catch (error) {
                 console.log(error);
             }
@@ -150,35 +174,58 @@ export default {
             this.getAllSongFromAPI();
             this.getAllSingerFromAPI();
             this.isDisplayListSinger = false;
+            this.isDisplayListSong = false;
             this.index = 0;
         },
         displayListSinger() {
             this.isDisplayListSinger = !this.isDisplayListSinger;
         },
+        displayListSong() {
+            this.isDisplayListSong = !this.isDisplayListSong;
+        },
 
         play(song) {
             if (typeof song?.srcSong != "undefined") {
                 this.current = song;
+                this.player.src = this.current.srcSong;
 
-                this.player.src = this.current?.srcSong;
             }
-
             this.player.play();
+
+
             this.timer = setInterval(() => {
                 this.displayTimer();
             }, 500);
+
+            // thay 1 trong 2 addEventListener
+            // ------------------------------------ Phát ngẫu nhiên
+            // this.player.addEventListener(
+            //     "ended",
+            //     function () {
+            //         this.index++;
+            //         clearInterval(this.timer);
+            //         if (this.index > this.songs.length - 1) {
+            //             this.index = 0;
+            //         }
+
+            //         this.current = this.songs[this.index];
+
+            //         this.play(this.current);
+            //     }.bind(this)
+            // );
+            // ------------------------------------ Phát Loop
             this.player.addEventListener(
                 "ended",
                 function () {
-                    this.index++;
-                    if (this.index > this.songs.length - 1) {
-                        this.index = 0;
-                    }
-
-                    this.current = this.songs[this.index];
+                    this.pause();
+                    this.isPlaying = false;
+                    this.range.value = 0;
+                    this.remainingTime = "00:00"
                     this.play(this.current);
+
                 }.bind(this)
             );
+
             this.isPlaying = true;
         },
         pause() {
@@ -190,6 +237,7 @@ export default {
             this.pause();
         },
         next() {
+            this.pause();
             this.index++;
             if (this.index > this.songs.length - 1) {
                 this.index = 0;
@@ -199,6 +247,7 @@ export default {
             this.play(this.current);
         },
         prev() {
+            this.pause();
             this.index--;
             if (this.index < 0) {
                 this.index = this.songs.length - 1;
@@ -217,7 +266,7 @@ export default {
 
         displayTimer() {
             const { duration, currentTime } = this?.player;
-            this.range.max = duration;
+            range.max = duration;
             this.range.value = currentTime;
 
             this.remainingTime = this.formatTimer(currentTime);

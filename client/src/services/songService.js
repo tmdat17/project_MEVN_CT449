@@ -23,5 +23,26 @@ const SongService = {
             console.log(error);
         }
     },
+    editSong: async (id, songNeedEdit) => {
+        try {
+            return (
+                await axios.put(
+                    `http://localhost:3333/song/edit/${id}`,
+                    songNeedEdit
+                )
+            ).data;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    deleteSong: async (id) => {
+        try {
+            return (
+                await axios.delete(`http://localhost:3333/song/delete/${id}`)
+            ).data;
+        } catch (error) {
+            console.log(error);
+        }
+    },
 };
 export default SongService;
