@@ -14,10 +14,4 @@ export default defineConfig({
     server: {
         port: 4444,
     },
-    // proxy: {
-    //     "/song": {
-    //         target: "http://localhost:3333/",
-    //         changeOrigin: true,
-    //     },
-    // },
 });

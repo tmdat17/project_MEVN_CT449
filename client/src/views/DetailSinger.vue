@@ -20,7 +20,7 @@
                     <div class="list-song">
                         <li v-if="songOfSinger.length == 0"> Chưa có bài hát nào!! </li>
                         <ul v-else>
-                            <li v-for="song in songOfSinger">{{ song.nameSong }}</li>
+                            <li v-for="song in songOfSinger">- {{ song.nameSong }}</li>
                         </ul>
                     </div>
                 </div>

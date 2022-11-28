@@ -9,7 +9,6 @@ const songController = {
                 const singer = await Singer.find({
                     nameSinger: req.body.nameSinger,
                 });
-                console.log("Singer tim duoc:  ", singer);
                 if (singer[0]) {
                     const newSong = new Song({
                         ...req.body,
