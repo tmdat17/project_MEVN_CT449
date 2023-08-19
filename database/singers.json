@@ -1,0 +1,180 @@
+[{
+  "_id": {
+    "$oid": "637d9d5c75f52af01a05fffa"
+  },
+  "nameSinger": "Hari Won",
+  "avt": "http://avatar.nct.nixcdn.com/singer/avatar/2019/09/26/1/d/b/5/1569474237302.jpg",
+  "songs": [
+    {
+      "$oid": "637d9f8975f52af01a06000c"
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669176668927"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669177225494"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6380ac46921d4bbcc840a24e"
+  },
+  "nameSinger": "AMEE",
+  "avt": "https://media.viez.vn/prod/2022/5/25/Amee_2_806e3cf426.png",
+  "songs": [
+    {
+      "$oid": "6380ac8a921d4bbcc840a254"
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669377094918"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669377162688"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6380edfeb0a4dfc9a4741533"
+  },
+  "nameSinger": "MONO",
+  "avt": "http://avatar.nct.nixcdn.com/singer/avatar/2022/08/08/c/6/c/1/1659932203225.jpg",
+  "songs": [
+    {
+      "$oid": "6380ee43b0a4dfc9a4741539"
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669393918215"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669615910850"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63833e70ad17f432c0401d8e"
+  },
+  "nameSinger": "Anh Tú",
+  "avt": "http://avatar.nct.nixcdn.com/singer/avatar/2021/03/18/7/5/f/f/1616036280838.jpg",
+  "songs": [
+    {
+      "$oid": "63845244b6d464d5cb9aed3b"
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669545584189"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669616196409"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63843b8fb6d464d5cb9aeca7"
+  },
+  "nameSinger": "Vũ",
+  "avt": "http://avatar.nct.nixcdn.com/singer/avatar/2022/09/06/8/9/f/3/1662436842575.jpg",
+  "songs": [
+    {
+      "$oid": "638451acb6d464d5cb9aed34"
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669610383797"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669616045030"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638445d3b6d464d5cb9aecf5"
+  },
+  "nameSinger": "Jack",
+  "avt": "http://avatar.nct.nixcdn.com/singer/avatar/2022/07/16/f/0/3/9/1657976995570.jpg",
+  "songs": [
+    {
+      "$oid": "63844946b6d464d5cb9aed0e"
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669613011239"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669615910816"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63845299b6d464d5cb9aed3e"
+  },
+  "nameSinger": "Bùi Trường Linh",
+  "avt": "http://avatar.nct.nixcdn.com/singer/avatar/2020/11/16/6/5/0/2/1605520530526.jpg",
+  "songs": [
+    {
+      "$oid": "638452d3b6d464d5cb9aed42"
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669616281934"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669616339511"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63845371b6d464d5cb9aed45"
+  },
+  "nameSinger": "Sơn Tùng M-TP",
+  "avt": "http://avatar.nct.nixcdn.com/singer/avatar/2021/05/12/7/d/c/b/1620802736418.jpg",
+  "songs": [
+    {
+      "$oid": "638453dbb6d464d5cb9aed49"
+    },
+    {
+      "$oid": "63845456b6d464d5cb9aed4d"
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669616497072"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669616726689"
+    }
+  },
+  "__v": 0
+}]

@@ -1,0 +1,199 @@
+[{
+  "_id": {
+    "$oid": "637d9f8975f52af01a06000c"
+  },
+  "nameSong": "Như anh đã mong chờ",
+  "thumb": "http://avatar.nct.nixcdn.com/song/2022/11/12/d/0/3/4/1668269383467.jpg",
+  "srcSong": "https://stream.nixcdn.com/NhacCuaTui2031/NhuAnhDaMongCho-HariWon-8246821.mp3?st=cohwhaQYgXIaFB5xe1IYCw&e=1669463479",
+  "nameSinger": "Hari Won",
+  "singer": {
+    "$oid": "637d9d5c75f52af01a05fffa"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669177225400"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669177225400"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6380ac8a921d4bbcc840a254"
+  },
+  "nameSong": "Hai mươi hai",
+  "thumb": "http://avatar.nct.nixcdn.com/song/2022/05/24/9/6/e/a/1653363505428.jpg",
+  "srcSong": "https://stream.nixcdn.com/NhacCuaTui2022/HaiMuoiHai22-HuaKimTuyenAMEE-7231237.mp3?st=oxSkIN3yt4S7hsW3_Ob8kA&e=1669463568",
+  "nameSinger": "AMEE",
+  "singer": {
+    "$oid": "6380ac46921d4bbcc840a24e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669377162683"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669377162683"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6380ee43b0a4dfc9a4741539"
+  },
+  "nameSong": "Waiting For You",
+  "thumb": "http://avatar.nct.nixcdn.com/song/2022/08/10/4/8/b/1/1660104031203.jpg",
+  "srcSong": "https://stream.nixcdn.com/NhacCuaTui2026/WaitingForYou-MONOOnionn-7733882.mp3?st=1aTxCZQE_H3oXs7OhaOcUA&e=1669463495",
+  "nameSinger": "MONO",
+  "singer": {
+    "$oid": "6380edfeb0a4dfc9a4741533"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669393987070"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669393987070"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63844946b6d464d5cb9aed0e"
+  },
+  "nameSong": "Cuối Cùng Thì",
+  "thumb": "http://avatar.nct.nixcdn.com/song/2022/11/07/e/d/4/3/1667802740293.jpg",
+  "srcSong": "https://stream.nixcdn.com/NhacCuaTui2031/CuoiCungThi-JackJ97-8207352.mp3?st=BdobsxBPrq2JaALbE7ZHEw&e=1669463576",
+  "nameSinger": "Jack",
+  "singer": {
+    "$oid": "638445d3b6d464d5cb9aecf5"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669613894703"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669615910855"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638451acb6d464d5cb9aed34"
+  },
+  "nameSong": "Bước Qua Nhau",
+  "thumb": "http://avatar.nct.nixcdn.com/song/2021/11/19/6/d/9/1/1637317177185.jpg",
+  "srcSong": "https://stream.nixcdn.com/Warner_Audio86/BuocQuaNhau-Vu-7847964.mp3?st=Yk1Jsr_CUxoivJNYfu04yg&e=1669463333",
+  "nameSinger": "Vũ",
+  "singer": {
+    "$oid": "63843b8fb6d464d5cb9aeca7"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669616045020"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669616045020"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63845244b6d464d5cb9aed3b"
+  },
+  "nameSong": "Bài Này Không Để Đi Diễn",
+  "thumb": "http://avatar.nct.nixcdn.com/song/2022/10/17/b/9/5/f/1665981317873.jpg",
+  "srcSong": "https://stream.nixcdn.com/NhacCuaTui2029/BaiNayKhongDeDiDien-AnhTuAtus-8076045.mp3?st=oEVg7r1wg-W1g8MA6SvMEg&e=1669463334",
+  "nameSinger": "Anh Tú",
+  "singer": {
+    "$oid": "63833e70ad17f432c0401d8e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669616196405"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669616196405"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638452d3b6d464d5cb9aed42"
+  },
+  "nameSong": "Yêu Người Có Ước Mơ",
+  "thumb": "http://avatar.nct.nixcdn.com/song/2022/11/07/e/d/4/3/1667805512437.jpg",
+  "srcSong": "https://stream.nixcdn.com/Warner_Audio105/YeuNguoiCoUocMo-Buitruonglinh-8209099.mp3?st=dDkeWZTbI-cT3ADkY6flkg&e=1669463378",
+  "nameSinger": "Bùi Trường Linh",
+  "singer": {
+    "$oid": "63845299b6d464d5cb9aed3e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669616339496"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669616339496"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638453dbb6d464d5cb9aed49"
+  },
+  "nameSong": "Hãy Trao Cho Anh",
+  "thumb": "http://avatar.nct.nixcdn.com/song/2019/07/03/7/5/b/e/1562137543919.jpg",
+  "srcSong": "https://stream.nixcdn.com/NhacCuaTui985/HayTraoChoAnh-SonTungMTPSnoopDogg-6010660.mp3?st=wve_GJdTXl5tr_mPIhvWZA&e=1669463409",
+  "nameSinger": "Sơn Tùng M-TP",
+  "singer": {
+    "$oid": "63845371b6d464d5cb9aed45"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669616603175"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669616603175"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63845456b6d464d5cb9aed4d"
+  },
+  "nameSong": "Chạy Ngay Đi",
+  "thumb": "http://avatar.nct.nixcdn.com/song/2018/05/12/e/8/6/f/1526059033533.jpg",
+  "srcSong": "https://stream.nixcdn.com/NhacCuaTui964/ChayNgayDi-SonTungMTP-5468704.mp3?st=4Ic4en4UccOWW1c32IA84Q&e=1669463479",
+  "nameSinger": "Sơn Tùng M-TP",
+  "singer": {
+    "$oid": "63845371b6d464d5cb9aed45"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669616726686"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669616726686"
+    }
+  },
+  "__v": 0
+}]
